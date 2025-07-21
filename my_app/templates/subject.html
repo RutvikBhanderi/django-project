@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <style>
+            table, th, td {
+                border:1px solid black;
+                border-collapse: collapse;
+                
+            }
+            .c1{
+    text-align: center;
+    margin: 200px 700px;
+}
+        </style>
+        <body>
+            <a href="add-subject" class="c1">Add</a>
+            <table style="width: 100%;">
+                <thead>
+                    <tr style="background-color: aquamarine;">
+                        <th>student_id</th>
+                        <th>student_name</th>
+                        <th>student_email</th>
+                        <th>subject_name</th>
+                        <th>chapter_count</th>
+                        <th>description</th>
+                        <th>Action</th>
+                    </tr>
+            </thead>
+            <tbody>
+                {% for i in y %}
+                <tr style="text-align: center;">
+                    <td>{{i.student_id}}</td>
+                    <td>{{i.student_id.firstname}}</td>
+                    <td>{{i.student_id.email}}</td>
+                    <td>{{i.subject_name}}</td>
+                    <td>{{i.chapter_count}}</td>
+                    <td>{{i.desc}}</td>
+                    <td>
+                        <a href="edit-subject/{{i.id}}" >Edit</a>
+                        <a href="delete-subject/{{i.id}}" >Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </body>
+    </head>
+</html>

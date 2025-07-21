@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <form action="/add-subject" method="post"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="stid">student-id:</label><br>
+            <input type="text" id="stid" name="stid" ><br>
+            <label for="subname">subject name:</label><br>
+            <input type="text" id="subname" name="subname" ><br>
+            <label for="chapcount">chapter count:</label><br>
+            <input type="text" id="chapcount" name="chapcount" ><br>
+            <label for="desc">description:</label><br>
+            <input type="text" id="desc" name="desc" ><br>
+            <input type="submit" value="Submit">
+        </form> 
+    </body>
+</html>

@@ -1,0 +1,64 @@
+{% load static %}
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+  border-collapse: collapse;
+}
+.b1{
+    text-align: center;
+    margin: 200px 600px;
+}
+.round{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+</style>
+<body>
+<img src="{% static 'gt650.jpg' %}" class="round"></img>
+<h1>Hello gujarat!</h1>
+<p>Welcome to my first Django project!</p>
+
+
+<a href="{% url 'add_1' %}" class="b1">Add</a>
+<table style="width:100%">
+    <thead>
+        <tr style="background-color: powderblue;">
+            <th>firstname</th>
+            <th>lastname</th>
+            <th>age</th>
+            <th>email</th>
+            <th>phone</th>
+            <th>city</th>
+            <th>image</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for a in x %}
+        <tr style="text-align: center;">
+            <td>{{a.firstname}}</td>
+            <td>{{a.lastname}}</td>
+            <td>{{a.age}}</td>
+            <td>{{a.email}}</td>
+            <td>{{a.phone}}</td>
+            <td>{{a.city}}</td>
+             <td><img src="{{a.image.url}}" class="round"></td>
+            <td>
+                <a href="edit-student/{{a.id}}" >Edit</a>
+                <a href="delete-student/{{a.id}}" >Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <br>
+</table>
+<hr>
+
+
+
+</table>
+</body>
+</html>
