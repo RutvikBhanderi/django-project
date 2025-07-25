@@ -10,7 +10,7 @@ def demo(request):
         "x" : obj
     }
     print(context)
-    return render(request,"first.html",context)
+    return render(request,"home.html",context)
 
 def contact_us(request):    
     return HttpResponse("you are in contact-us")
