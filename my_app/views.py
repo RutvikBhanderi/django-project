@@ -1,7 +1,8 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 from .models import student, subject
+
 
 def demo(request):
     obj = student.objects.all()
@@ -73,7 +74,7 @@ def delete_student(request,id):
 ### subject table:
 
 def demo1(request):
-    obj = subject.objects.all()
+    obj = subject.objects.filter(subject_name__range=("a", "n"))
     context ={
         "y" : obj
     }
@@ -83,40 +84,38 @@ def demo1(request):
     return render(request,"subject.html",context)
 
 def edit_subject(request,id):
+    sub = get_object_or_404(subject, id=id)
+    students = student.objects.all()
     if request.method == "POST":
-        stdid = request.POST['stid']
-        subname = request.POST['subname']
-        chapcount = request.POST['chapcount']
-        desc = request.POST['desc']
-        obj2 = subject.objects.get(id=id)
-        obj2.student_id = stdid
-        obj2.subject_name = subname
-        obj2.chapter_count = chapcount
-        obj2.desc = desc
-        obj2.save()
-        return redirect('home1')
+        stid = request.POST['stid']
+        sub.student_id = student.objects.get(id=stid)
+        sub.subject_name = request.POST['subname']
+        sub.chapter_count = request.POST['chapcount']
+        sub.desc = request.POST['desc']
+        sub.save()
+        return redirect('h1')
     else:
         s1 = subject.objects.get(id=id)
         context ={
             "i" : s1
         }
-        return render(request,"edit_subject.html",context)
+        return render(request,"edit_subject.html", {'i': sub, 'students': students})
     
 def add_subject(request):
+    sub1 = subject()
+    print(sub1)
+    students1 = student.objects.all()
     if request.method == "POST":
-        stdid = request.POST['stid']
-        subname =request.POST['subname']
-        chapcount =request.POST['chapcount']
-        desc =request.POST['desc']
-        obj2 = subject.objects.get()
-        obj2.student_id = stdid
-        obj2.subject_name = subname
-        obj2.chapter_count = chapcount
-        obj2.desc = desc
-        obj2.save()
-        return redirect('home1')
+        stid = request.POST['stid']
+        sub1.student_id = student.objects.get(id=stid)
+        sub1.subject_name = request.POST['subname']
+        sub1.chapter_count = request.POST['chapcount']
+        sub1.desc = request.POST['desc']
+        sub1.save()
+        
+        return redirect('h1')
     else:
-        return render(request,"add_subject.html")
+        return render(request,"add_subject.html",{'i': sub1, 'students1': students1})
     
 def delete_subject(request,id):
    d2 = subject.objects.get(id=id)

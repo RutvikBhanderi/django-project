@@ -3,7 +3,13 @@
         <form action="{% url 'editsub' i.id %}" method="post">
             {% csrf_token %}
             <label for="stid">student-id:</label><br>
-            <input type="text" id="stid" name="stid" value="{{i.student_id}}"><br>
+            <select name="stid" id="stid">
+                {% for s in students %}
+                    <option value="{{s.id}}">
+                        {{s.firstname}} {{s.lastname}} {{s.email}}
+                    </option>
+                {% endfor %}
+            </select><br>
             <label for="subname">subject name:</label><br>
             <input type="text" id="subname" name="subname" value="{{i.subject_name}}"><br>
             <label for="chapcount">chapter count:</label><br>

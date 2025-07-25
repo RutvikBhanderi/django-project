@@ -1,10 +1,16 @@
 <html>
     <body>
-        <form action="/add-subject" method="post"
+        <form action="{% url 'addsub' %}" method="post"
               enctype="multipart/form-data">
             {% csrf_token %}
             <label for="stid">student-id:</label><br>
-            <input type="text" id="stid" name="stid" ><br>
+            <select name="stid" id="stid">
+                {% for s in students1 %}
+                    <option value="{{s.id}}">
+                        {{s.firstname}} {{s.lastname}}
+                    </option>
+                {% endfor %}
+            </select><br>
             <label for="subname">subject name:</label><br>
             <input type="text" id="subname" name="subname" ><br>
             <label for="chapcount">chapter count:</label><br>
