@@ -49,6 +49,7 @@ def edit_student(request,id):
         Email = request.POST['email']
         Phone = request.POST['phone']
         City = request.POST['city']
+        img = request.FILES.get('image')
         obj2 = student.objects.get(id=id)
         obj2.firstname=fname
         obj2.lastname=lname
@@ -56,6 +57,8 @@ def edit_student(request,id):
         obj2.email=Email
         obj2.phone=Phone
         obj2.city=City
+        if img:
+            obj2.image=img
         obj2.save()
         print(request.POST['fname'])
         return redirect('home')

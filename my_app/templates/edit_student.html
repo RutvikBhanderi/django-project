@@ -1,3 +1,68 @@
+        {% extends "base.html" %}
+        {% block body %}
+         <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 my-6 mb-0 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="bg-primary text-center p-5">
+                        <h1 class="mb-4">EDIT STUDENT</h1>
+                        <form action="{% url 'edit_1' b.id %}" method="post"enctype="multipart/form-data">
+                          {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0" id="fname" name="fname" placeholder="Enter firstname" value="{{b.firstname}}">
+                                        <label for="fname">First name</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0" id="lname" name="lname"  value="{{b.lastname}}">
+                                        <label for="lname">Lastname</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0" id="age" name="age"  value="{{b.age}}">
+                                        <label for="age">Age</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0" id="email" name="email" value="{{b.email}}">
+                                        <label for="email;">Email</label>
+                                    </div>
+                                </div>
+                                 <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0" id="phone" name="phone" value="{{b.phone}}">
+                                        <label for="phone;">Phone</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                         <input type="text" class="form-control border-0" id="city" name="city" value="{{b.city}}">
+                                        <label for="city">city</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="file" class="form-control border-0" id="image" name="image" value="{{b.image}}" >
+                                        <label for="image;">Edit Image</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-dark w-100 py-3" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock  %}
+      
+
+<!--
 <html>
     <body>
         <form action="{% url 'edit_1' b.id %}" method="post">
@@ -18,3 +83,4 @@
         </form> 
     </body>
 </html>
+-->
