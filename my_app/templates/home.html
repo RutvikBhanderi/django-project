@@ -3,7 +3,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block body %}
-<a href="{% url 'add_1' %}" class="b1">Add</a>
+<a href="{% url 'add_1' %}" class="b1 btn btn-success btn-lg">Add</a>
 <table style="width:100%" class="table table-dark table-hover">
     <thead class="table-success">
         
@@ -30,8 +30,8 @@
             <td>{{a.city}}</td>
              <td><img src="{{a.image.url}}" class="img-thumbnail" style="height:50px; width:50px;"></td>
             <td>
-                <a href="edit-student/{{a.id}}" >Edit</a>
-                <a href="delete-student/{{a.id}}" >Delete</a>
+                <a href="edit-student/{{a.id}}" class="btn btn-light">Edit</a>
+                <a href="delete-student/{{a.id}}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         {% endfor %}
